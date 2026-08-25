@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Flipbook asep afandi!</title>
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+  <audio id="birthdayMusic" loop preload="auto">
+  <source src="nastelbom-happy-birthday-471481.mp3" type="audio/mpeg">
+</audio>
+  <!-- =====================================================
+     🧸 CUTE BIRTHDAY DECORATION
+===================================================== -->
+
+<div id="cuteBear" aria-hidden="true">
+  <div class="bear-bubble">SELAMAT ULANG TAHUN!🥹🎉🎂🎊</div>
+
+  <div class="bear">
+    🧸
+  </div>
+
+  <div class="bear-cake">🎂</div>
+</div>
+
+<!-- Floating decorations -->
+<div id="floatingDecorations"></div>
+
+<!-- Surprise overlay -->
+<div id="birthdaySurprise" class="birthday-surprise">
+
+  <div class="surprise-box">
+
+    <button
+      class="surprise-close"
+      onclick="closeSurprise()"
+    >
+      ×
+    </button>
+
+    <div class="surprise-bear">
+      🧸
+    </div>
+
+    <div class="surprise-confetti">
+      🎉 🎂 🎊
+    </div>
+
+    <h2>
+      HAPPY BIRTHDAY
+      <span>ASEP AFANDI!  🎉🎂🎊✨</span>
+    </h2>
+
+    <p>
+      Satu tahun lagi bertambah,
+      satu chapter baru dimulai.  🎉🎂🎊✨
+    </p>
+
+    <p class="surprise-small">
+      Semoga semua hal baik yang kamu perjuangkan
+      perlahan datang satu per satu. HAPPY BIRTHDAY
+    </p>
+
+
+
+  </div>
+
+</div>
+<div class="bg-stars" id="stars"></div>
+
+<!-- =====================================================
+     🌙 LANGIT MALAM: BULAN SABIT, AWAN PINK, BALON
+===================================================== -->
+<div id="nightSky" aria-hidden="true">
+
+  <svg class="moon-svg" viewBox="0 0 100 100" width="92" height="92">
+    <path d="M50 8 A42 42 0 1 0 92 50 A34 34 0 1 1 50 8 Z" fill="#ffe9a3"/>
+    <path d="M38 42 Q41 45 44 42" stroke="#7a5a2e" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M52 40 Q55 43 58 40" stroke="#7a5a2e" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M40 50 Q49 60 58 50" stroke="#7a5a2e" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+  </svg>
+
+  <div class="pink-cloud pink-cloud-1"></div>
+  <div class="pink-cloud pink-cloud-2"></div>
+  <div class="pink-cloud pink-cloud-3"></div>
+
+  <div class="balloon" style="left:76%;font-size:44px">🎈</div>
+  <div class="balloon" style="left:86%;font-size:30px;filter:hue-rotate(240deg) drop-shadow(0 6px 10px rgba(0,0,0,.28))">🎈</div>
+  <div class="balloon" style="left:92%;font-size:36px;filter:hue-rotate(150deg) drop-shadow(0 6px 10px rgba(0,0,0,.28))">🎈</div>
+  <div class="balloon" style="left:69%;font-size:26px;filter:hue-rotate(320deg) drop-shadow(0 6px 10px rgba(0,0,0,.28))">🎈</div>
+
+</div>
+
+<!-- =====================================================
+     🎨 ILLUSTRASI KARAKTER DI BAWAH
+     anak cewek + kucing putih + kue ultah + beruang bawa kado
+===================================================== -->
+<div id="birthdayScene" aria-hidden="true">
+  <div class="scene-ground"></div>
+  <div class="scene-ch scene-girl">👧<span class="scene-wave">✋</span></div>
+  <div class="scene-ch scene-cat">🐱</div>
+  <div class="scene-ch scene-cake">🎂</div>
+  <div class="scene-ch scene-bear">🧸<span class="scene-hat"></span></div>
+  <div class="scene-gift" style="left:300px">🎁</div>
+  <div class="scene-bubble">Happy Birthday ASEP AFANDI!</div>
+</div>
+
+<div class="app">
+  <div class="topbar">
+    <b>MY LITTLE BIRTHDAY BOOK</b>
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <main class="book-wrap">
+
+    <!-- PAGE 1 -->
+    <section class="page active" data-page="0">
+      <div class="paper cover">
+        <div class="confetti">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="cover-content">
+          <div class="small">A SPECIAL DAY FOR</div>
+          <h1>HAPPY<span>BIRTHDAY!</span></h1>
+          <div class="cover-photo-wrap">
+            <img class="cover-photo" id="coverPhoto" src="asep1.jpeg" alt="Foto utama">
+            <div class="hat">HAPPY<br>BIRTHDAY</div>
+          </div>
+          <div class="cover-age" id="coverAge">🎂</div>
+          <p class="cover-note">especially for you ♡</p>
+
+          <!-- 🧸 MINI GAME -->
+          <div class="bear-game">
+
+            <div class="game-title">🧸 TANGKAP BERUANGNYA!</div>
+
+            <p class="game-instruction">
+              Beruangnya nakal banget 😭💨<br>
+              Tangkap dia sebanyak <b>3 kali!</b>
+            </p>
+
+            <div class="game-info">
+              <span>🎯 Score: <b id="bearScore">0</b>/3</span>
+              <span>⏱️ <b id="bearTimer">15</b>s</span>
+            </div>
+
+            <div class="bear-game-area" id="bearGameArea">
+              <div id="runningBear" class="running-bear" onclick="catchBear(event)">🧸</div>
+              <div id="gameMessage" class="game-message">Tangkap aku kalau bisa! 😝</div>
+            </div>
+
+            <button id="startBearGame" class="game-start-btn" onclick="startBearGame()">🧸 MULAI TANGKAP!</button>
+
+          </div>
+
+          <button id="openBirthdayBook" class="open-btn birthday-open-btn" onclick="openBirthdayBook()">
+            🎁 OPEN YOUR BIRTHDAY BOOK →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page" data-page="1">
+      <div class="paper">
+        <div class="ribbon"></div>
+        <div class="confetti"><span></span><span></span><span></span><span></span></div>
+        <h2 class="title">Heyyyooow,remember this date?</h2>
+        <p class="subtitle">TODAY IS YOUR BIRTHDAY!!!🎈</p>
+
+        <div class="calendar-card">
+          <div class="month" id="monthName">September</div>
+          <div class="week">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div>
+            <div>Thu</div><div>Fri</div><div>Sat</div>
+          </div>
+          <div class="days" id="calendar"></div>
+        </div>
+
+        <div class="calendar-bottom">Make today a little more memorable ✨</div>
+
+        <div class="life-counter" id="lifeCounter">
+          <span class="life-emoji">🕰️</span>
+          <p class="life-label">SELAMA INI KAMU SUDAH HIDUP SELAMA...</p>
+          <div class="life-stats">
+            <div class="life-stat"><b id="lcDays">0</b><small>hari</small></div>
+            <div class="life-stat"><b id="lcHours">0</b><small>jam</small></div>
+            <div class="life-stat"><b id="lcMinutes">0</b><small>menit</small></div>
+            <div class="life-stat"><b id="lcSeconds">0</b><small>detik</small></div>
+          </div>
+          <p class="life-note">...dan terus bertumbuh jadi versi terbaik kamu ✨</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="page" data-page="2">
+      <div class="paper">
+        <h2 class="gallery-title">♡</h2>
+        <p class="gallery-sub">
+          ♡<br>
+          <span>LEVEL UP! HAPPY BIRTHDAY TO YOU </span>
+        </p>
+        <div class="gallery">
+          <div class="photo"><img src="asep.jpeg" alt="Memory 1"><div class="photo-caption">🎂</div></div>
+          <div class="photo big"><img src="asep1.jpeg" alt="Memory 2"><div class="photo-caption">🎂 </div></div>
+          <div class="photo"><img src="asep4.jpeg" alt="Memory 3"><div class="photo-caption">🎂 </div></div>
+          <div class="photo"><img src="asep6.jpeg" alt="Memory 4"><div class="photo-caption">🎂 </div></div>
+          <div class="photo"><img src="asep2.jpeg" alt="Memory 5"><div class="photo-caption">🎂 </div></div>
+          <div class="photo"><img src="asep11.jpeg" alt="Memory 6"><div class="photo-caption">🎂 </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="page" data-page="3">
+      <div class="paper">
+        <div class="wish-layout">
+          <div class="mini-photo">
+            <img src="asep4.jpeg" alt="Foto ucapan">
+          </div>
+          <div class="clipboard">
+            <div class="clip"></div>
+            <div class="wish-title">Special Wishes<br>For You</div>
+            <div class="wish-text">
+              Happy birthday and congratulations on your graduation! ASEP AFANDi🎓🎂
+              Dua hal spesial yang datang di taun yang sama.
+              Semoga di usia yang baru ini, semua langkah kamu dimudahkan,
+              karier kamu semakin baik, dan semua impian yang kamu punya satu per satu bisa terwujud.
+              Proud of you for making it this far.
+              Semoga setelah ini ada lebih banyak hal baik yang menunggu kamu. 🤍
+              SEMANGATTTT!.
+              <br><br>
+              Jangan lupa menikmati perjalanan, bukan cuma mengejar
+              tujuan. Semoga kamu selalu dikelilingi orang-orang baik,
+              punya banyak alasan untuk tersenyum, dan tetap menjadi
+              versi diri kamu sendiri.
+              <br><br>
+              Keep growing, keep smiling, and keep being you.<br>
+              HIDUPLAH TANPA MEMIKIRKAN ATURAN DUNIA ♡
+            </div>
+            <div class="wish-sign">♡</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5 -->
+    <section class="page" data-page="4">
+      <div class="paper">
+        <h2 class="pop-title">POP BALONNYA!! 🎈</h2>
+        <p class="pop-sub">
+          Klik balonnya satu per satu —<br>
+          di dalamnya ada <b>ucapan rahasia</b> buat kamu 💌
+        </p>
+
+        <div class="pop-info">
+          <span>🎈 Sudah pop: <b id="popCount">0</b> / 10</span>
+        </div>
+
+        <div class="pop-area" id="popArea"></div>
+
+        <div id="popWish" class="pop-wish"></div>
+        <div id="popMessage" class="pop-message"></div>
+      </div>
+    </section>
+
+    <!-- PAGE 6 -->
+    <section class="page" data-page="5">
+      <div class="paper final">
+        <div class="gift-wrap">
+          <h2 class="gift-title">BUKA KADO KEJUTANNYA! 🎁</h2>
+          <p class="gift-sub">Klik kado satu per satu — ada kejutan di dalamnya ✨</p>
+
+          <div class="gift-info">
+            <span>Terbuka: <b id="giftCount">0</b> / 4</span>
+          </div>
+
+          <div class="gift-row" id="giftRow"></div>
+
+          <div id="giftReveal" class="gift-reveal"></div>
+          <div id="giftMessage" class="gift-message"></div>
+
+          <div class="cake-blow">
+            <div class="cake-title">SATU LAGI... TIUP LILINNYA! 🎂</div>
+            <p class="cake-sub">Klik lilinnya satu per satu, lalu buat permohonan 🌬️✨</p>
+
+            <div class="cake" id="birthdayCake">
+              <div class="cake-candles" id="candleRow"></div>
+              <div class="cake-layer cake-layer-top"></div>
+              <div class="cake-layer cake-layer-bottom"></div>
+              <div class="cake-plate"></div>
+            </div>
+
+            <div class="cake-message" id="cakeMessage"></div>
+            <button id="relightBtn" class="game-start-btn" onclick="relightCandles()" style="display:none">🔥 NYALAKAN LAGI</button>
+          </div>
+
+          <div class="final-buttons">
+            <button id="giftSurpriseBtn" class="open-btn" onclick="showSurprise()" style="display:none">🎁 ONE MORE SURPRISE</button>
+            <button class="open-btn again" onclick="goTo(0)">↻ READ IT AGAIN</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 7 -->
+    <section class="page" data-page="6">
+      <div class="paper closure-paper">
+        <div class="closure-wrap">
+          <h2 class="closure-title">SEBELUM BUKU INI TERTUTUP...</h2>
+          <p class="closure-sub">ada satu hal kecil yang mau aku sampein🥹🤍</p>
+
+          <div class="closure-letter">
+            <div class="closure-heart">🤍</div>
+
+            <p>Terima kasih banyak ya udah mau sempetin waktu buat kenal dan ngerespon aku selama ini.</p>
+            <P>aku sedih banget kamu udah gada energi lagi buat aku,tapi THAT'S OKAY
+              kalo bisa tolong kasih aku closure biar aku ga selalu bertanya tanya apa yang salah,honesty is more important to me.</p>
+            <P>tapi kalo kamu memang gamau atau gabisa ga papa banget,i won't force you to give me closure.</p>
+
+            <p>INTINYA
+            <p>selamat ulang tahun. Semoga kamu bahagia entah bersama siapa dan dengan apapun yang kamu pilih. Take care ya.🤍</p>
+
+            <div class="closure-sign">IMISSYOU♡</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 8 -->
+    <section class="page" data-page="7">
+      <div class="paper all-paper">
+        <h2 class="gallery-title all-page-title">📸</h2>
+        <p class="gallery-sub">
+          SEMUA FOTONYA!<br>
+          <span>koleksi lengkap kamu — klik fotonya buat lihat lebih dekat ♡</span>
+        </p>
+
+        <div class="gallery all-gallery">
+          <div class="photo"><img src="asep.jpeg" alt="Semua foto 1"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep1.jpeg" alt="Semua foto 2"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep2.jpeg" alt="Semua foto 3"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep3.jpeg" alt="Semua foto 4"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep4.jpeg" alt="Semua foto 5"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep5.jpeg" alt="Semua foto 6"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep6.jpeg" alt="Semua foto 7"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep7.jpeg" alt="Semua foto 8"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep8.jpeg" alt="Semua foto 9"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep9.jpeg" alt="Semua foto 10"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep10.jpeg" alt="Semua foto 11"><div class="photo-caption">🤍</div></div>
+          <div class="photo"><img src="asep11.jpeg" alt="Semua foto 12"><div class="photo-caption">🤍</div></div>
+        </div>
+
+        <div class="calendar-bottom all-page-bottom">the end of our little scrapbook ✨</div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="controls">
+    <button class="nav-btn" id="prevBtn" onclick="prevPage()">← PREV</button>
+    <div class="page-number" id="pageNumber">1 / 8</div>
+    <button class="nav-btn primary" id="nextBtn" onclick="nextPage()">NEXT →</button>
+  </div>
+
+<!-- 🎆 Kembang api canvas -->
+<canvas id="fireworksCanvas" aria-hidden="true"></canvas>
+
+<!-- 📸 Lightbox gallery -->
+<div id="lightbox" class="lightbox" onclick="lightboxBackdropClose(event)">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Tutup">×</button>
+  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Sebelumnya">‹</button>
+  <figure class="lightbox-figure">
+    <img id="lightboxImg" src="" alt="Foto diperbesar">
+    <figcaption id="lightboxCaption"></figcaption>
+  </figure>
+  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Berikutnya">›</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
