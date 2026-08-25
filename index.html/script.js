@@ -78,7 +78,7 @@ function applyConfig(){
   document.title=`Happy Birthday ${CONFIG.name} 22!🎂`;
   document.getElementById("coverAge").textContent="22!";
   document.querySelector(".cover .small").textContent=`A SPECIAL DAY FOR ${CONFIG.name.toUpperCase()}`;
-  document.querySelector(".cover-note").textContent=`a tiny digital scrapbook made especially for ${CONFIG.name} ♡`;
+  document.querySelector(".cover-note").textContent=`♡`;
 
   const [y,m,d]=CONFIG.birthday.split("-").map(Number);
   const date=new Date(y,m-1,d);
