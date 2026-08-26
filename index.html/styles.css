@@ -2453,3 +2453,145 @@ h1,h2,.script{font-family:"DM Serif Display",serif}
   .all-gallery { grid-template-columns: 1fr 1fr; gap: 9px; }
   .all-gallery .photo img { height: 110px; }
 }
+
+/* =========================================================
+   ⏳ COUNTDOWN OVERLAY — TERKUNCI SAMPAI 1 SEPTEMBER
+========================================================= */
+
+.countdown-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(1000px 520px at 82% -8%, rgba(122,92,200,.55), transparent 60%),
+    radial-gradient(760px 460px at 8% 108%, rgba(70,46,140,.55), transparent 62%),
+    linear-gradient(180deg,#0b0a2a 0%,#191247 42%,#2b1f63 74%,#47297a 100%);
+  opacity: 1;
+  transition: opacity .8s ease, visibility .8s ease;
+  padding: 20px;
+}
+
+.countdown-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.countdown-box {
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+  background: rgba(255,255,255,.06);
+  border: 1px dashed rgba(255,255,255,.2);
+  border-radius: 24px;
+  padding: 40px 28px;
+  backdrop-filter: blur(12px);
+  animation: countdownPulse 3s ease-in-out infinite;
+}
+
+@keyframes countdownPulse {
+  0%, 100% { box-shadow: 0 0 40px rgba(122,92,200,.2); }
+  50% { box-shadow: 0 0 60px rgba(122,92,200,.4); }
+}
+
+.countdown-emoji {
+  font-size: 60px;
+  animation: countdownSpin 4s ease-in-out infinite;
+}
+
+@keyframes countdownSpin {
+  0%, 100% { transform: rotate(-8deg) scale(1); }
+  50% { transform: rotate(8deg) scale(1.1); }
+}
+
+.countdown-title {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(28px, 6vw, 42px);
+  color: #fff7ea;
+  margin: 12px 0 6px;
+  text-shadow: 0 4px 18px rgba(0,0,0,.25);
+}
+
+.countdown-sub {
+  font-size: 13px;
+  color: #c9c2e8;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  background: linear-gradient(160deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px;
+  min-width: 78px;
+  padding: 14px 10px 10px;
+}
+
+.countdown-unit b {
+  display: block;
+  font-size: clamp(28px, 6vw, 40px);
+  color: #ffd166;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px rgba(255,209,102,.5);
+}
+
+.countdown-unit small {
+  font-size: 9px;
+  letter-spacing: .14em;
+  color: #c9c2e8;
+  text-transform: uppercase;
+}
+
+.countdown-sep {
+  font-size: 32px;
+  color: rgba(255,255,255,.3);
+  font-weight: 700;
+  animation: sepBlink 1s ease-in-out infinite;
+  margin: 0 2px;
+}
+
+@keyframes sepBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .2; }
+}
+
+.countdown-date {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #b3a7d6;
+  letter-spacing: .1em;
+}
+
+.countdown-bear {
+  font-size: 36px;
+  margin-top: 14px;
+  animation: bearBob 3s ease-in-out infinite;
+}
+
+/* Sembunyikan konten utama saat countdown aktif */
+body.countdown-active .app,
+body.countdown-active .bg-stars,
+body.countdown-active #nightSky,
+body.countdown-active #birthdayScene,
+body.countdown-active #cuteBear,
+body.countdown-active #floatingDecorations {
+  visibility: hidden;
+}
+
+@media(max-width:650px) {
+  .countdown-box { padding: 30px 18px; }
+  .countdown-emoji { font-size: 48px; }
+  .countdown-unit { min-width: 65px; padding: 10px 8px 8px; }
+  .countdown-unit b { font-size: 28px; }
+}
