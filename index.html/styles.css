@@ -2590,8 +2590,12 @@ body.countdown-active #floatingDecorations {
 }
 
 @media(max-width:650px) {
-  .countdown-box { padding: 30px 18px; }
+  .countdown-box { padding: 30px 14px; }
   .countdown-emoji { font-size: 48px; }
-  .countdown-unit { min-width: 65px; padding: 10px 8px 8px; }
-  .countdown-unit b { font-size: 28px; }
+  .countdown-unit { min-width: 0; flex: 1; padding: 10px 4px 8px; }
+  .countdown-unit b { font-size: 26px; }
+  .countdown-timer { gap: 4px; }
+  .countdown-sep { font-size: 24px; margin: 0 0; }
+  .countdown-title { font-size: clamp(22px, 6vw, 34px); }
+  .countdown-sub { font-size: 12px; margin-bottom: 16px; }
 }
