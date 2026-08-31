@@ -236,70 +236,36 @@ function toggleMusic(btn, key) {
 
 applyConfig();
 renderPage();
+
 /* =========================================================
    🧸 CUTE BIRTHDAY EFFECT SYSTEM
 ========================================================= */
 
-
-/* =========================================================
-   ✨ SPARKLE SAAT PINDAH HALAMAN
-========================================================= */
-
 function createPageSparkles() {
-
-  const symbols = [
-    "✦",
-    "✧",
-    "✨",
-    "💫"
-  ];
+  const symbols = ["✦", "✧", "✨", "💫"];
 
   for (let i = 0; i < 14; i++) {
-
-    const sparkle =
-      document.createElement("span");
-
-    sparkle.className =
-      "page-sparkle";
-
-    sparkle.textContent =
-      symbols[
-        Math.floor(
-          Math.random() * symbols.length
-        )
-      ];
-
-    sparkle.style.left =
-      Math.random() * 100 + "vw";
-
-    sparkle.style.top =
-      Math.random() * 100 + "vh";
-
-    sparkle.style.fontSize =
-      (10 + Math.random() * 18) + "px";
-
-    sparkle.style.animationDelay =
-      Math.random() * .3 + "s";
+    const sparkle = document.createElement("span");
+    sparkle.className = "page-sparkle";
+    sparkle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.fontSize = (10 + Math.random() * 18) + "px";
+    sparkle.style.animationDelay = Math.random() * .3 + "s";
 
     document.body.appendChild(sparkle);
 
     setTimeout(() => {
-
       sparkle.remove();
-
     }, 1500);
-
   }
-
 }
-
 
 /* =========================================================
    💕 HATI SAAT KLIK LAYAR
 ========================================================= */
 
 document.addEventListener("click", function(e) {
-
   if (
     e.target.closest("button") ||
     e.target.closest("input") ||
@@ -308,371 +274,169 @@ document.addEventListener("click", function(e) {
     return;
   }
 
-  const emojis = [
-    "💫",
-    "🎈",
-    "✧",
-    "🌸",
-    "✨",
-    "🧸"
-  ];
-
-  const heart =
-    document.createElement("div");
-
-  heart.className =
-    "click-heart";
-
-  heart.textContent =
-    emojis[
-      Math.floor(
-        Math.random() * emojis.length
-      )
-    ];
-
-  heart.style.left =
-    e.clientX + "px";
-
-  heart.style.top =
-    e.clientY + "px";
+  const emojis = ["💫", "🎈", "✧", "🌸", "✨", "🧸"];
+  const heart = document.createElement("div");
+  heart.className = "click-heart";
+  heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  heart.style.left = e.clientX + "px";
+  heart.style.top = e.clientY + "px";
 
   document.body.appendChild(heart);
 
   setTimeout(() => {
-
     heart.remove();
-
   }, 1000);
-
 });
-
 
 /* =========================================================
    🎈 FLOATING DECORATIONS
 ========================================================= */
 
 function createFloatingDecoration() {
+  const emojis = ["🎈", "💗", "✨", "🌸", "🧸", "✨", "💫"];
+  const item = document.createElement("div");
+  item.className = "float-decoration";
+  item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.fontSize = (15 + Math.random() * 20) + "px";
+  item.style.animationDuration = (5 + Math.random() * 5) + "s";
 
-  const emojis = [
-    "🎈",
-    "💗",
-    "✨",
-    "🌸",
-    "🧸",
-    "✨",
-    "💫",
-  ];
-
-  const item =
-    document.createElement("div");
-
-  item.className =
-    "float-decoration";
-
-  item.textContent =
-    emojis[
-      Math.floor(
-        Math.random() * emojis.length
-      )
-    ];
-
-  item.style.left =
-    Math.random() * 100 + "vw";
-
-  item.style.fontSize =
-    (15 + Math.random() * 20) + "px";
-
-  item.style.animationDuration =
-    (5 + Math.random() * 5) + "s";
-
-  document
-    .getElementById("floatingDecorations")
-    .appendChild(item);
+  const container = document.getElementById("floatingDecorations");
+  if (container) container.appendChild(item);
 
   setTimeout(() => {
-
     item.remove();
-
   }, 11000);
-
 }
 
-
-/* Jalankan terus */
-
-setInterval(
-  createFloatingDecoration,
-  1800
-);
-
+setInterval(createFloatingDecoration, 1800);
 
 /* =========================================================
    🎉 CONFETTI
 ========================================================= */
 
 function birthdayConfetti(amount = 40) {
-
-  const emojis = [
-    "🎉",
-    "🎊",
-    "🎂",
-    "✨",
-    "🎈",
-    "💖",
-    "🎈",
-    "🧸",
-    "✨",
-    "💫"
-  ];
+  const emojis = ["🎉", "🎊", "🎂", "✨", "🎈", "💖", "🎈", "🧸", "✨", "💫"];
 
   for (let i = 0; i < amount; i++) {
+    const confetti = document.createElement("div");
+    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    confetti.style.position = "fixed";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.top = "-50px";
+    confetti.style.fontSize = (15 + Math.random() * 20) + "px";
+    confetti.style.zIndex = "20001";
+    confetti.style.pointerEvents = "none";
 
-    const confetti =
-      document.createElement("div");
-
-    confetti.textContent =
-      emojis[
-        Math.floor(
-          Math.random() * emojis.length
-        )
-      ];
-
-    confetti.style.position =
-      "fixed";
-
-    confetti.style.left =
-      Math.random() * 100 + "vw";
-
-    confetti.style.top =
-      "-50px";
-
-    confetti.style.fontSize =
-      (15 + Math.random() * 20) + "px";
-
-    confetti.style.zIndex =
-      "20001";
-
-    confetti.style.pointerEvents =
-      "none";
-
-    const duration =
-      2 + Math.random() * 3;
-
-    confetti.style.transition =
-      `transform ${duration}s linear,
-       opacity ${duration}s linear`;
+    const duration = 2 + Math.random() * 3;
+    confetti.style.transition = `transform ${duration}s linear, opacity ${duration}s linear`;
 
     document.body.appendChild(confetti);
 
     requestAnimationFrame(() => {
-
-      confetti.style.transform =
-        `translateY(110vh)
-         rotate(${Math.random() * 720}deg)`;
-
+      confetti.style.transform = `translateY(110vh) rotate(${Math.random() * 720}deg)`;
       confetti.style.opacity = "0";
-
     });
 
     setTimeout(() => {
-
       confetti.remove();
-
     }, duration * 1000 + 300);
-
   }
-
 }
-
 
 /* =========================================================
    🎁 SURPRISE
 ========================================================= */
 
 function showSurprise() {
-
-  const surprise =
-    document.getElementById(
-      "birthdaySurprise"
-    );
-
+  const surprise = document.getElementById("birthdaySurprise");
   if (!surprise) return;
-
   surprise.classList.add("show");
-
   birthdayConfetti(60);
-
 }
-
-
-/* =========================================================
-   ❌ CLOSE SURPRISE
-========================================================= */
 
 function closeSurprise() {
-
-  const surprise =
-    document.getElementById(
-      "birthdaySurprise"
-    );
-
+  const surprise = document.getElementById("birthdaySurprise");
   if (!surprise) return;
-
   surprise.classList.remove("show");
-
 }
-
 
 /* =========================================================
    🧸 PELUK BERUANG
 ========================================================= */
 
 function hugBear() {
-
-  const hug =
-    document.createElement("div");
-
-  hug.className =
-    "hug-animation";
-
-  hug.textContent =
-    "HAPPY BIRTHDAY YAAAA! 🧸💖";
-
+  const hug = document.createElement("div");
+  hug.className = "hug-animation";
+  hug.textContent = "HAPPY BIRTHDAY YAAAA! 🧸💖";
   document.body.appendChild(hug);
-
   birthdayConfetti(25);
 
   setTimeout(() => {
-
     hug.remove();
-
   }, 1600);
-
 }
-
 
 /* =========================================================
    📖 MODIFIKASI renderPage
 ========================================================= */
 
-const originalRenderPage =
-  renderPage;
+const originalRenderPage = renderPage;
 
 renderPage = function() {
-
   originalRenderPage();
-
   createPageSparkles();
 
-  /*
-    Halaman pertama = confetti kecil
-    Halaman terakhir = confetti besar
-  */
-
   if (current === 0) {
-
-    setTimeout(() => {
-
-      birthdayConfetti(20);
-
-    }, 300);
-
+    setTimeout(() => { birthdayConfetti(20); }, 300);
   }
 
   if (current === pages.length - 1) {
-
-    setTimeout(() => {
-
-      birthdayConfetti(45);
-
-    }, 500);
-
+    setTimeout(() => { birthdayConfetti(45); }, 500);
   }
 
   if (current === 4) {
-
     startPopGame();
-
   }
 
   if (current === 5) {
-
     buildGifts();
-
     if (!wishTyped) {
       setTimeout(typeWishLetter, 600);
     }
-
   }
 
   if (current === pages.length - 1) {
-
     fireworksStart();
-
   } else {
-
     fireworksStop();
-
   }
-
 };
-
 
 /* =========================================================
    🎵 MUSIC VISUALIZER
 ========================================================= */
 
-document
-  .querySelectorAll(".play")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      function() {
-
-        const song =
-          this.closest(".song");
-
-        setTimeout(() => {
-
-          document
-            .querySelectorAll(".song")
-            .forEach(s => {
-
-              s.classList.remove(
-                "playing"
-              );
-
-            });
-
-          if (
-            this.textContent === "Ⅱ" &&
-            song
-          ) {
-
-            song.classList.add(
-              "playing"
-            );
-
-          }
-
-        }, 100);
-
+document.querySelectorAll(".play").forEach(button => {
+  button.addEventListener("click", function() {
+    const song = this.closest(".song");
+    setTimeout(() => {
+      document.querySelectorAll(".song").forEach(s => s.classList.remove("playing"));
+      if (this.textContent === "Ⅱ" && song) {
+        song.classList.add("playing");
       }
-    );
-
+    }, 100);
   });
-
+});
 
 /* =========================================================
    🎂 FIRST LOAD
 ========================================================= */
 
 setTimeout(() => {
-
   birthdayConfetti(35);
-
 }, 700);
+
 /* =========================================================
    🧸 RUNNING BEAR GAME
 ========================================================= */
@@ -686,13 +450,7 @@ let bearMoveTimeout = null;
 
 const BEAR_TARGET = 3;
 
-
-/* =========================================================
-   🎮 START GAME
-========================================================= */
-
 function startBearGame() {
-
   if (bearGameRunning) return;
 
   bearScore = 0;
@@ -700,483 +458,181 @@ function startBearGame() {
   bearGameRunning = true;
   bearGameWon = false;
 
-  const score =
-    document.getElementById("bearScore");
-
-  const timer =
-    document.getElementById("bearTimer");
-
-  const bear =
-    document.getElementById("runningBear");
-
-  const button =
-    document.getElementById("startBearGame");
-
-  const openButton =
-    document.getElementById("openBirthdayBook");
-
-  const message =
-    document.getElementById("gameMessage");
+  const score = document.getElementById("bearScore");
+  const timer = document.getElementById("bearTimer");
+  const bear = document.getElementById("runningBear");
+  const button = document.getElementById("startBearGame");
+  const openButton = document.getElementById("openBirthdayBook");
+  const message = document.getElementById("gameMessage");
 
   score.textContent = "0";
   timer.textContent = "15";
-
   button.disabled = true;
-
-  button.textContent =
-    "🏃 BERUANGNYA LARI!";
-
-  openButton.style.display =
-    "none";
-
-  message.textContent =
-    "HAHA! Tangkap aku! 😝";
+  button.textContent = "🏃 BERUANGNYA LARI!";
+  openButton.style.display = "none";
+  message.textContent = "HAHA! Tangkap aku! 😝";
 
   bear.classList.add("running");
-
   moveBear();
 
-  bearTimerInterval =
-    setInterval(() => {
-
-      bearTime--;
-
-      timer.textContent =
-        bearTime;
-
-      if (bearTime <= 0) {
-
-        endBearGame(false);
-
-      }
-
-    }, 1000);
-
+  bearTimerInterval = setInterval(() => {
+    bearTime--;
+    timer.textContent = bearTime;
+    if (bearTime <= 0) {
+      endBearGame(false);
+    }
+  }, 1000);
 }
-
-
-/* =========================================================
-   🏃 BERUANG PINDAH POSISI
-========================================================= */
 
 function moveBear() {
-
   if (!bearGameRunning) return;
 
-  const area =
-    document.getElementById(
-      "bearGameArea"
-    );
+  const area = document.getElementById("bearGameArea");
+  const bear = document.getElementById("runningBear");
 
-  const bear =
-    document.getElementById(
-      "runningBear"
-    );
+  const areaWidth = area.clientWidth;
+  const areaHeight = area.clientHeight;
+  const bearWidth = bear.offsetWidth;
+  const bearHeight = bear.offsetHeight;
 
-  const areaWidth =
-    area.clientWidth;
+  const maxX = areaWidth - bearWidth - 10;
+  const maxY = areaHeight - bearHeight - 10;
 
-  const areaHeight =
-    area.clientHeight;
+  const x = 10 + Math.random() * Math.max(10, maxX);
+  const y = 25 + Math.random() * Math.max(10, maxY - 20);
 
-  const bearWidth =
-    bear.offsetWidth;
+  bear.style.left = x + "px";
+  bear.style.top = y + "px";
+  bear.style.transform = "translate(0,0)";
 
-  const bearHeight =
-    bear.offsetHeight;
-
-
-  const maxX =
-    areaWidth - bearWidth - 10;
-
-  const maxY =
-    areaHeight - bearHeight - 10;
-
-
-  const x =
-    10 +
-    Math.random() *
-    Math.max(10, maxX);
-
-
-  const y =
-    25 +
-    Math.random() *
-    Math.max(10, maxY - 20);
-
-
-  bear.style.left =
-    x + "px";
-
-  bear.style.top =
-    y + "px";
-
-  bear.style.transform =
-    "translate(0,0)";
-
-
-  /*
-    Semakin tinggi skor,
-    semakin cepat dia kabur.
-  */
-
-  const speed =
-    Math.max(
-      280,
-      750 - bearScore * 65
-    );
-
-
-  bearMoveTimeout =
-    setTimeout(
-      moveBear,
-      speed
-    );
-
+  const speed = Math.max(280, 750 - bearScore * 65);
+  bearMoveTimeout = setTimeout(moveBear, speed);
 }
-
-
-/* =========================================================
-   🧸 BERHASIL MENANGKAP
-========================================================= */
 
 function catchBear(event) {
-
   if (!bearGameRunning) return;
-
   event.stopPropagation();
-
   bearScore++;
 
+  const score = document.getElementById("bearScore");
+  const message = document.getElementById("gameMessage");
+  const area = document.getElementById("bearGameArea");
 
-  const score =
-    document.getElementById(
-      "bearScore"
-    );
+  score.textContent = bearScore;
 
-  const message =
-    document.getElementById(
-      "gameMessage"
-    );
+  const effect = document.createElement("div");
+  effect.className = "catch-effect";
+  effect.textContent = bearScore >= BEAR_TARGET ? "🎉" : "🥹🎉🎂🎊";
 
-  const area =
-    document.getElementById(
-      "bearGameArea"
-    );
-
-
-  score.textContent =
-    bearScore;
-
-
-  /* 💥 efek tangkap */
-
-  const effect =
-    document.createElement("div");
-
-  effect.className =
-    "catch-effect";
-
-  effect.textContent =
-    bearScore >= BEAR_TARGET
-      ? "🎉"
-      : "🥹🎉🎂🎊";
-
-
-  const areaRect =
-    area.getBoundingClientRect();
-
-  effect.style.left =
-    (event.clientX - areaRect.left) + "px";
-
-  effect.style.top =
-    (event.clientY - areaRect.top) + "px";
-
+  const areaRect = area.getBoundingClientRect();
+  effect.style.left = (event.clientX - areaRect.left) + "px";
+  effect.style.top = (event.clientY - areaRect.top) + "px";
 
   area.appendChild(effect);
-
-
-  setTimeout(() => {
-
-    effect.remove();
-
-  }, 800);
-
+  setTimeout(() => effect.remove(), 800);
 
   const messages = [
-
     "KETANGKEP! 😭",
-
     "IHHH CURANG! 😭",
-
     "Lepasin aku! 🧸",
-
     "Kok jago sih?! 😭",
-
     "Aduhhh ketangkep lagi! 💨",
-
     "Jangan ditangkap terus! 😂"
-
   ];
 
-
-  message.textContent =
-    messages[
-      Math.floor(
-        Math.random() *
-        messages.length
-      )
-    ];
-
+  message.textContent = messages[Math.floor(Math.random() * messages.length)];
 
   if (bearScore >= BEAR_TARGET) {
-
     endBearGame(true);
-
     return;
-
   }
 
-
-  /*
-    Langsung pindah sebelum tertangkap
-  */
-
-  clearTimeout(
-    bearMoveTimeout
-  );
-
+  clearTimeout(bearMoveTimeout);
   moveBear();
-
 }
-
-
-/* =========================================================
-   ⏰ GAME SELESAI
-========================================================= */
 
 function endBearGame(won) {
-
   bearGameRunning = false;
-
   bearGameWon = won;
 
+  clearInterval(bearTimerInterval);
+  clearTimeout(bearMoveTimeout);
 
-  clearInterval(
-    bearTimerInterval
-  );
+  const bear = document.getElementById("runningBear");
+  const button = document.getElementById("startBearGame");
+  const openButton = document.getElementById("openBirthdayBook");
+  const message = document.getElementById("gameMessage");
 
-  clearTimeout(
-    bearMoveTimeout
-  );
-
-
-  const bear =
-    document.getElementById(
-      "runningBear"
-    );
-
-  const button =
-    document.getElementById(
-      "startBearGame"
-    );
-
-  const openButton =
-    document.getElementById(
-      "openBirthdayBook"
-    );
-
-  const message =
-    document.getElementById(
-      "gameMessage"
-    );
-
-
-  bear.classList.remove(
-    "running"
-  );
-
+  bear.classList.remove("running");
 
   if (won) {
+    message.textContent = "AAAA KAMU MENANG! 🎉🧸";
+    button.textContent = "🎉 BERUANG KALAH!";
+    openButton.style.display = "inline-block";
 
-    message.textContent =
-      "AAAA KAMU MENANG! 🎉🧸";
-
-    button.textContent =
-      "🎉 BERUANG KALAH!";
-
-    openButton.style.display =
-      "inline-block";
-
-
-    /* 🎉 confetti */
-
-    if (
-      typeof birthdayConfetti ===
-      "function"
-    ) {
-
-      birthdayConfetti(45);
-
-    }
-
-
-    /* 🥹🎉 🎂 🎊 sparkle */
-
-    if (
-      typeof createPageSparkles ===
-      "function"
-    ) {
-
-      createPageSparkles();
-
-    }
-
+    if (typeof birthdayConfetti === "function") birthdayConfetti(45);
+    if (typeof createPageSparkles === "function") createPageSparkles();
   } else {
-
-    message.textContent =
-      "HAHAHA KAMU KETINGGALAN! 😝🧸";
-
+    message.textContent = "HAHAHA KAMU KETINGGALAN! 😝🧸";
     button.disabled = false;
-
-    button.textContent =
-      "🔄 COBA LAGI";
-
+    button.textContent = "🔄 COBA LAGI";
   }
-
 }
-
-
-/* =========================================================
-   🎯 RESET KALAU KEMBALI KE PAGE 1
-========================================================= */
 
 function resetBearGame() {
-
-  clearInterval(
-    bearTimerInterval
-  );
-
-  clearTimeout(
-    bearMoveTimeout
-  );
+  clearInterval(bearTimerInterval);
+  clearTimeout(bearMoveTimeout);
 
   bearGameRunning = false;
-
   bearScore = 0;
-
   bearTime = 15;
-
   bearGameWon = false;
 
+  const score = document.getElementById("bearScore");
+  const timer = document.getElementById("bearTimer");
+  const button = document.getElementById("startBearGame");
+  const openButton = document.getElementById("openBirthdayBook");
+  const message = document.getElementById("gameMessage");
 
-  const score =
-    document.getElementById(
-      "bearScore"
-    );
-
-  const timer =
-    document.getElementById(
-      "bearTimer"
-    );
-
-  const button =
-    document.getElementById(
-      "startBearGame"
-    );
-
-  const openButton =
-    document.getElementById(
-      "openBirthdayBook"
-    );
-
-  const message =
-    document.getElementById(
-      "gameMessage"
-    );
-
-
-  if (score)
-    score.textContent = "0";
-
-  if (timer)
-    timer.textContent = "15";
-
+  if (score) score.textContent = "0";
+  if (timer) timer.textContent = "15";
   if (button) {
-
     button.disabled = false;
-
-    button.textContent =
-      "🧸 MULAI TANGKAP!";
-
+    button.textContent = "🧸 MULAI TANGKAP!";
   }
-
-  if (openButton) {
-
-    openButton.style.display =
-      "none";
-
-  }
-
-  if (message) {
-
-    message.textContent =
-      "Tangkap aku kalau bisa! 😝";
-
-  }
-
+  if (openButton) openButton.style.display = "none";
+  if (message) message.textContent = "Tangkap aku kalau bisa! 😝";
 }
 
-
-/* =========================================================
-   📖 DETEKSI PAGE
-========================================================= */
-
-const oldGoTo =
-  goTo;
-
+const oldGoTo = goTo;
 goTo = function(n) {
-
   if (n > current && !gameUnlocked()) {
-
     showGameLockMessage();
-
     return;
-
   }
-
   oldGoTo(n);
-
   if (n === 0) {
-
     resetBearGame();
-
   }
-
 };
+
 /* =========================================================
    🎶 BIRTHDAY MUSIC
 ========================================================= */
 
 function openBirthdayBook() {
-
-  // Buka halaman Birthday Book
   const before = current;
   goTo(1);
 
-  // Kalau masih terkunci (game belum menang), jangan putar musik
   if (current <= before) return;
 
-  // Ambil musik
   const music = document.getElementById("birthdayMusic");
-
-  // Volume 70%
-  music.volume = 0.70;
-
-  // Putar musik
-  music.play().catch(error => {
-    console.log("Musik gagal diputar:", error);
-  });
+  if (music) {
+    music.volume = 0.70;
+    music.play().catch(error => {
+      console.log("Musik gagal diputar:", error);
+    });
+  }
 }
 
 /* =========================================================
@@ -1184,7 +640,6 @@ function openBirthdayBook() {
 ========================================================= */
 
 const POP_TARGET = 10;
-
 const POP_WISHES = [
   "Semoga selalu bahagia ya! 💖",
   "Semoga sehat selalu! 🥹",
@@ -1363,9 +818,8 @@ function openGift(box, i) {
   }
 }
 
-
 /* =========================================================
-   ?? KEMBANG API CANVAS
+   🎆 KEMBANG API CANVAS
 ========================================================= */
 
 const fwCanvas = document.getElementById("fireworksCanvas");
@@ -1425,7 +879,6 @@ function fireworksTick() {
   fwx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
   fwx.globalCompositeOperation = "lighter";
 
-  /* Roket naik */
   for (let i = fwRockets.length - 1; i >= 0; i--) {
     const r = fwRockets[i];
     r.y += r.vy;
@@ -1439,7 +892,6 @@ function fireworksTick() {
     }
   }
 
-  /* Partikel ledakan */
   for (let i = fwParticles.length - 1; i >= 0; i--) {
     const p = fwParticles[i];
     p.x += p.vx;
@@ -1489,7 +941,6 @@ function fireworksStop() {
   fwCanvas.classList.remove("active");
 }
 
-/* Ledakan besar sesaat */
 function fireworksBurst(amount = 5) {
   if (!fwCanvas) return;
   if (!fwActive) fireworksStart();
@@ -1500,9 +951,8 @@ function fireworksBurst(amount = 5) {
   }
 }
 
-
 /* =========================================================
-   ?? TIUP LILIN KUE
+   🎂 TIUP LILIN KUE
 ========================================================= */
 
 let candlesLit = 0;
@@ -1540,7 +990,7 @@ function blowCandle(candle) {
   if (candlesLit === 0) {
     const msg = document.getElementById("cakeMessage");
     if (msg) {
-      msg.textContent = "SEMUA LILIN MATI! Semoga semua doamu terkabul ????";
+      msg.textContent = "SEMUA LILIN MATI! Semoga semua doamu terkabul ✨";
       msg.classList.add("show");
     }
     const btn = document.getElementById("relightBtn");
@@ -1564,9 +1014,8 @@ function relightCandles() {
   if (btn) btn.style.display = "none";
 }
 
-
 /* =========================================================
-   ?? LIGHTBOX GALLERY
+   📸 LIGHTBOX GALLERY
 ========================================================= */
 
 let lightboxIndex = 0;
@@ -1585,11 +1034,10 @@ function openLightbox(i) {
   lightboxIndex = ((i % imgs.length) + imgs.length) % imgs.length;
   imgEl.src = imgs[lightboxIndex].src;
   imgEl.alt = imgs[lightboxIndex].alt || "Foto diperbesar";
-  if (caption) caption.textContent = "Foto " + (lightboxIndex + 1) + " dari " + imgs.length + " ?";
+  if (caption) caption.textContent = "Foto " + (lightboxIndex + 1) + " dari " + imgs.length + " ♡";
 
   box.classList.add("show");
 
-  /* Re-trigger animasi zoom tiap ganti foto */
   const figure = box.querySelector(".lightbox-figure");
   if (figure) {
     figure.style.animation = "none";
@@ -1615,9 +1063,8 @@ document.querySelectorAll(".gallery .photo").forEach((photo, i) => {
   photo.addEventListener("click", () => openLightbox(i));
 });
 
-
 /* =========================================================
-   ?? EFEK MESIN KETIK � HALAMAN UCAPAN
+   ✍️ EFEK MESIN KETIK HALAMAN UCAPAN
 ========================================================= */
 
 let wishTyped = false;
@@ -1628,7 +1075,6 @@ function typeWishLetter() {
   if (!el || wishTyped) return;
   wishTyped = true;
 
-  /* Simpan teks asli lalu ketik ulang huruf per huruf */
   const raw = el.innerHTML
     .replace(/<br\s*\/?>(\s*)/gi, "\n")
     .replace(/<[^>]+>/g, "")
@@ -1654,7 +1100,6 @@ function typeWishLetter() {
     }
 
     let chunk = 1;
-    /* Ketik sedikit lebih cepat setelah spasi/jeda biar tidak terlalu lama */
     if (fullText[pos] === "\n") chunk = 1;
 
     const textNode = document.createTextNode(fullText.slice(pos, pos + chunk));
@@ -1667,9 +1112,8 @@ function typeWishLetter() {
   step();
 }
 
-
 /* =========================================================
-   ? HITUNG HARI HIDUP � REAL-TIME
+   ⏰ HITUNG HARI HIDUP REAL-TIME
 ========================================================= */
 
 function updateLifeCounter() {
@@ -1696,53 +1140,8 @@ function updateLifeCounter() {
 setInterval(updateLifeCounter, 1000);
 updateLifeCounter();
 
-/* ===================================================
-   ?? INIT FITUR BARU
-=================================================== */
-
-buildBirthdayCake();
-
-cript.js‎
-Original file line number	Diff line number	Diff line change
-@@ -1692,67 +1692,3 @@ function updateLifeCounter() {
-  m.textContent = minutes;
-  s.textContent = seconds;
-}
-setInterval(updateLifeCounter, 1000);
-updateLifeCounter();
-
 /* =========================================================
-   ⏳ COUNTDOWN — TERKUNCI SAMPAI 1 SEPTEMBER
+   🎂 INIT FITUR
 ========================================================= */
 
-(function () {
-  const overlay = document.getElementById("countdownOverlay");
-  if (!overlay) return;
-   
-  /* Target: 1 September tahun ini jam 00:00:00 WIB (UTC+7) */
-  const now = new Date();
-  let targetYear = now.getFullYear();
-  let target = new Date(targetYear, 8, 1, 0, 0, 0); // bulan 8 = September (0-indexed)
-
-  }
-  /* Update countdown setiap detik */
-  function updateCountdown() {
-    const current = new Date();
-    let diff = target.getTime() - current.getTime();
-     
-    /* Kalau sudah waktunya, buka overlay */
-    if (diff <= 0) {
-      overlay.classList.add("hidden");
-      document.body.classList.remove("countdown-active");
-      return;
-    }
-    const days = Math.floor(diff / 86400000); diff -= days * 86400000;
-    const hours = Math.floor(diff / 3600000); diff -= hours * 3600000;
-    const minutes = Math.floor(diff / 60000); diff -= minutes * 60000;
-    const seconds = Math.floor(diff / 1000);
-    document.getElementById("cdDays").textContent = String(days).padStart(2, "0");
-    document.getElementById("cdHours").textContent = String(hours).padStart(2, "0");
-    document.getElementById("cdMinutes").textContent = String(minutes).padStart(2, "0");
-    document.getElementById("cdSeconds").textContent = String(seconds).padStart(2, "0");
-     
-})();
+buildBirthdayCake();
