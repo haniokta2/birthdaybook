@@ -1723,10 +1723,7 @@ updateLifeCounter();
   const now = new Date();
   let targetYear = now.getFullYear();
   let target = new Date(targetYear, 8, 1, 0, 0, 0); // bulan 8 = September (0-indexed)
-  /* tetap terbuka di 1 September 2026 */
-  if (now >= target) {
-    targetYear++;
-    target = new Date(targetYear, 8, 1, 0, 0, 0);
+
   }
   /* Update countdown setiap detik */
   function updateCountdown() {
@@ -1747,13 +1744,5 @@ updateLifeCounter();
     document.getElementById("cdHours").textContent = String(hours).padStart(2, "0");
     document.getElementById("cdMinutes").textContent = String(minutes).padStart(2, "0");
     document.getElementById("cdSeconds").textContent = String(seconds).padStart(2, "0");
-  }
-  /* Update teks tahun */
-  const dateEl = document.getElementById("countdownDate");
-  if (dateEl) dateEl.textContent = "🗓️ 1 SEPTEMBER " + targetYear;
-  /* Sembunyikan dulu semua konten */
-  document.body.classList.add("countdown-active");
-  /* Update pertama kali + timer */
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+     
 })();
