@@ -1692,3 +1692,60 @@ function updateLifeCounter() {
   m.textContent = minutes;
   s.textContent = seconds;
 }
+
+setInterval(updateLifeCounter, 1000);
+updateLifeCounter();
+
+/* ===================================================
+   ?? INIT FITUR BARU
+=================================================== */
+
+buildBirthdayCake();
+
+/* ===================================================
+   ⏳ COUNTDOWN — TERKUNCI SAMPAI 1 SEPTEMBER
+=================================================== */
+
+(function () {
+  const overlay = document.getElementById("countdown-overlay");
+  if (!overlay) return;
+
+  /* Target: 1 September tahun ini jam 00:00:00 */
+  const now = new Date();
+  let targetYear = now.getFullYear();
+  let target = new Date(targetYear, 8, 1, 0, 0, 0);
+
+  if (now > target) {
+    overlay.style.display = "none";
+    return;
+  }
+
+  function updateLockTimer() {
+    const current = new Date();
+    const diff = target - current;
+
+    if (diff <= 0) {
+      overlay.style.display = "none";
+      clearInterval(lockInterval);
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / 1000 / 60) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    const elD = document.getElementById("lockDays");
+    const elH = document.getElementById("lockHours");
+    const elM = document.getElementById("lockMinutes");
+    const elS = document.getElementById("lockSeconds");
+
+    if (elD) elD.textContent = String(d).padStart(2, "0");
+    if (elH) elH.textContent = String(h).padStart(2, "0");
+    if (elM) elM.textContent = String(m).padStart(2, "0");
+    if (elS) elS.textContent = String(s).padStart(2, "0");
+  }
+
+  const lockInterval = setInterval(updateLockTimer, 1000);
+  updateLockTimer();
+})();
