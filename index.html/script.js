@@ -1702,50 +1702,58 @@ updateLifeCounter();
 
 buildBirthdayCake();
 
-/* ===================================================
+cript.js‎
+Original file line number	Diff line number	Diff line change
+@@ -1692,67 +1692,3 @@ function updateLifeCounter() {
+  m.textContent = minutes;
+  s.textContent = seconds;
+}
+setInterval(updateLifeCounter, 1000);
+updateLifeCounter();
+
+/* =========================================================
    ⏳ COUNTDOWN — TERKUNCI SAMPAI 1 SEPTEMBER
-=================================================== */
+========================================================= */
 
 (function () {
-  const overlay = document.getElementById("countdown-overlay");
+  const overlay = document.getElementById("countdownOverlay");
   if (!overlay) return;
-
-  /* Target: 1 September tahun ini jam 00:00:00 */
+   
+  /* Target: 1 September tahun ini jam 00:00:00 WIB (UTC+7) */
   const now = new Date();
   let targetYear = now.getFullYear();
-  let target = new Date(targetYear, 8, 1, 0, 0, 0);
-
-  if (now > target) {
-    overlay.style.display = "none";
-    return;
+  let target = new Date(targetYear, 8, 1, 0, 0, 0); // bulan 8 = September (0-indexed)
+  /* tetap terbuka di 1 September 2026 */
+  if (now >= target) {
+    targetYear++;
+    target = new Date(targetYear, 8, 1, 0, 0, 0);
   }
-
-  function updateLockTimer() {
+  /* Update countdown setiap detik */
+  function updateCountdown() {
     const current = new Date();
-    const diff = target - current;
-
+    let diff = target.getTime() - current.getTime();
+     
+    /* Kalau sudah waktunya, buka overlay */
     if (diff <= 0) {
-      overlay.style.display = "none";
-      clearInterval(lockInterval);
+      overlay.classList.add("hidden");
+      document.body.classList.remove("countdown-active");
       return;
     }
-
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / 1000 / 60) % 60);
-    const s = Math.floor((diff / 1000) % 60);
-
-    const elD = document.getElementById("lockDays");
-    const elH = document.getElementById("lockHours");
-    const elM = document.getElementById("lockMinutes");
-    const elS = document.getElementById("lockSeconds");
-
-    if (elD) elD.textContent = String(d).padStart(2, "0");
-    if (elH) elH.textContent = String(h).padStart(2, "0");
-    if (elM) elM.textContent = String(m).padStart(2, "0");
-    if (elS) elS.textContent = String(s).padStart(2, "0");
+    const days = Math.floor(diff / 86400000); diff -= days * 86400000;
+    const hours = Math.floor(diff / 3600000); diff -= hours * 3600000;
+    const minutes = Math.floor(diff / 60000); diff -= minutes * 60000;
+    const seconds = Math.floor(diff / 1000);
+    document.getElementById("cdDays").textContent = String(days).padStart(2, "0");
+    document.getElementById("cdHours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("cdMinutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("cdSeconds").textContent = String(seconds).padStart(2, "0");
   }
-
-  const lockInterval = setInterval(updateLockTimer, 1000);
-  updateLockTimer();
+  /* Update teks tahun */
+  const dateEl = document.getElementById("countdownDate");
+  if (dateEl) dateEl.textContent = "🗓️ 1 SEPTEMBER " + targetYear;
+  /* Sembunyikan dulu semua konten */
+  document.body.classList.add("countdown-active");
+  /* Update pertama kali + timer */
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 })();
